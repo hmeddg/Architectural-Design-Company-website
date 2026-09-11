@@ -1,0 +1,41 @@
+/* Studio statement (41:3). Generous tracking and leading — the design sets this
+   copy apart from the rest of the page's body text. */
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.block {
+  font-size: var(--fs-prose);
+  line-height: 1.75;
+  letter-spacing: 0.035em;
+}
+
+.line {
+  display: inline;
+}
+
+/* Opening statement, carried at full ink. */
+.lead {
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+/* The argument, one step back so the lead and coda hold the eye. */
+.body {
+  color: var(--text-secondary);
+}
+
+/* The three-line signature. The first two lines land, the last one releases —
+   so the closing line drops back to the body colour and weight. */
+.coda {
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.coda .line:last-child {
+  color: var(--text-secondary);
+  font-weight: var(--weight-regular);
+}

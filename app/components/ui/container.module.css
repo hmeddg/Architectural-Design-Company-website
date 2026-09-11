@@ -1,0 +1,8 @@
+/* Page shell — 1344px content column inside the responsive gutter. */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--shell-max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}

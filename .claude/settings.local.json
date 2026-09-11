@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 /Users/hamed/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.13.0/.claude/skills/ui-ux-pro-max/scripts/search.py 'server components images fonts css modules' --stack nextjs -n 5)",
+      "Bash(python3 -c \"import PIL, numpy; print\\(PIL.__version__, numpy.__version__\\)\")"
+    ]
+  }
+}

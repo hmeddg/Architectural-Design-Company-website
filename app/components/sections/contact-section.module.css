@@ -1,0 +1,108 @@
+/* 05 / CONTACT — full-bleed dark band (87:2) with Frame 6 (47:71) on top.
+   The comp's white-transparent footer logo assets are what identify this close
+   as dark; all inverse tokens come from styles/tokens.css. */
+
+.band {
+  background-color: var(--ink);
+  color: var(--text-inverse);
+  /* Dark ground ⇒ flip the focus ring so it stays >=3:1. */
+  --focus-color: var(--text-inverse);
+}
+
+.inner {
+  padding-block: 3.5rem;
+}
+
+/* Line 6 (47:73) runs the full content column above the label. */
+.head {
+  padding-block-start: 1.375rem;
+  border-top: 1px solid var(--rule-inverse);
+}
+
+.row {
+  display: grid;
+  gap: 3rem;
+  margin-block-start: 2.5rem;
+}
+
+/* With no label block above it, the row leads the band. Higher specificity
+   than the plain .row rules, so it also wins inside the media queries. */
+.row:first-child {
+  margin-block-start: 0;
+}
+
+/* ------------------------------------------------------------------- copy --- */
+
+/* Contact H2 (76:2) — 600x108 ⇒ 48px / 1.125 over 2 lines. */
+.heading {
+  max-width: 37.5rem;
+  font-size: var(--fs-display-2);
+  line-height: var(--lh-display-2);
+}
+
+.body {
+  max-width: 32.5rem;
+  margin-block-start: 1.75rem;
+  color: var(--text-inverse-muted);
+}
+
+/* Divider (76:4) is 520 wide in the comp, then the two detail pairs. */
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 32.5rem;
+  margin-block-start: 2.5rem;
+  padding-block-start: 1.875rem;
+  border-top: 1px solid var(--rule-inverse);
+}
+
+.detailLabel {
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-inverse-faint);
+}
+
+.detailValue {
+  margin: 0;
+  margin-block-start: 0.5rem;
+  font-size: var(--fs-detail);
+}
+
+.detailLink {
+  color: var(--text-inverse-muted);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.detailLink:hover,
+.detailLink:focus-visible {
+  color: var(--text-inverse);
+}
+
+/* --------------------------------------------------------------- scale up --- */
+
+@media (min-width: 768px) {
+  .inner {
+    padding-block: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Copy 600 + gap 144 + form 600 across the 1344 column. */
+  .row {
+    grid-template-columns: minmax(0, 600fr) minmax(0, 600fr);
+    gap: 9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .inner {
+    padding-block: 2.8125rem 5rem;
+  }
+
+  .row {
+    margin-block-start: 4rem;
+  }
+}

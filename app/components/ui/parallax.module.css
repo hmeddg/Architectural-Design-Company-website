@@ -1,0 +1,25 @@
+/* Parallax frame. The frame clips; the inner layer moves. */
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+  /* The promoted layer gets its own stacking context, so sibling scrims and
+     captions stay above it. */
+  isolation: isolate;
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+  /* Scaled to cover the travel, so the image never pulls off the frame edge. */
+  scale: var(--parallax-scale, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    scale: 1;
+    transform: none !important;
+    will-change: auto;
+  }
+}

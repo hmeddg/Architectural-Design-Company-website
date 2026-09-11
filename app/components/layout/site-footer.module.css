@@ -1,0 +1,136 @@
+/* FOOTER (87:3) — 1440x500, dark. Comp columns: brand 420 at x=48, contact at
+   x=540, studio at x=790, image 383 at x=721. */
+
+.footer {
+  background-color: var(--ink);
+  color: var(--text-inverse);
+  /* Dark ground ⇒ flip the focus ring. */
+  --focus-color: var(--text-inverse);
+  padding-block: 3.5rem 2rem;
+  border-top: 1px solid var(--rule-inverse);
+}
+
+.top {
+  display: grid;
+  gap: 2.5rem;
+}
+
+/* ------------------------------------------------------------------ brand --- */
+
+.statement {
+  max-width: 26.25rem; /* 420px */
+  margin-block-start: 1.75rem;
+  font-size: var(--fs-detail);
+  line-height: 1.65;
+  color: var(--text-inverse-muted);
+}
+
+.credentials {
+  margin-block-start: 1.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-inverse-faint);
+}
+
+/* ---------------------------------------------------------------- columns --- */
+
+.columnLabel {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-inverse-faint);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-start: 1rem;
+}
+
+.link {
+  display: inline-block;
+  /* Comfortable tap row without disturbing the comp's rhythm. */
+  padding-block: 0.1875rem;
+  font-size: var(--fs-detail);
+  color: var(--text-inverse-muted);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--text-inverse);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-block-start: 1rem;
+  font-size: var(--fs-detail);
+  font-style: normal;
+  color: var(--text-inverse-muted);
+}
+
+.addressLine {
+  display: block;
+}
+
+/* ------------------------------------------------------------------ bottom -- */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-block-start: 3rem;
+  padding-block-start: 1.75rem;
+  border-top: 1px solid var(--rule-inverse);
+}
+
+.copyright {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-inverse-faint);
+}
+
+/* --------------------------------------------------------------- scale up --- */
+
+@media (min-width: 640px) {
+  .top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand,
+  .mediaCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding-block: 5.5rem 2rem;
+  }
+
+  /* The comp's four columns. */
+  .top {
+    grid-template-columns: minmax(0, 420fr) minmax(0, 220fr) minmax(0, 220fr) minmax(0, 383fr);
+    gap: 2.125rem;
+  }
+
+  .brand,
+  .mediaCol {
+    grid-column: auto;
+  }
+
+  .bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-block-start: 4rem;
+  }
+}

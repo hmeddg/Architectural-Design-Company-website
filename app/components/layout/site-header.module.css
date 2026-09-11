@@ -1,0 +1,66 @@
+/* HEADER (2:3) — 88px band with a 1px bottom rule (2:4).
+   Mobile-first: the inline nav and phone appear at >=1024px, below which the
+   drawer (MobileMenu) takes over. */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--ivory-warm);
+  border-bottom: 1px solid var(--rule);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  min-height: var(--header-h);
+  gap: 1.5rem;
+}
+
+.brand {
+  flex: 0 0 auto;
+  margin-inline-end: auto;
+}
+
+.nav,
+.phone {
+  display: none;
+}
+
+/* Phone (2:12) — right-aligned to the content column, handset mark to its left. */
+.phone {
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-nav);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.phone:hover,
+.phone:focus-visible {
+  color: var(--text-primary);
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    /* Wordmark ends ~x=155, nav starts x=200 in the comp. */
+    gap: 2.8125rem;
+  }
+
+  .brand {
+    margin-inline-end: 0;
+  }
+
+  .nav {
+    display: block;
+    flex: 1 1 auto;
+  }
+
+  .phone {
+    display: inline-flex;
+    margin-inline-start: auto;
+  }
+}

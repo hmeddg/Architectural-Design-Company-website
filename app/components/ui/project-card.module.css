@@ -1,0 +1,98 @@
+/* Project card — comp image box 660x242 (ratio 2.727) with a 60px caption scrim.
+   Mobile takes a taller crop; the comp ratio returns at >=768px. */
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  border-radius: 2px;
+  /* Clips the image and the caption scrim to the rounded corner. */
+  overflow: hidden;
+  background-color: var(--graphite);
+  color: var(--text-on-media);
+  --focus-color: var(--ink);
+}
+
+.figure {
+  height: 100%;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .figure,
+.card:focus-visible .figure {
+  transform: scale(1.03);
+}
+
+/* Bottom Overlay (2:50 / 2:51) — 60 of the 242px card. */
+.scrim {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 55%;
+  background: var(--scrim-card-bottom);
+}
+
+.caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  /* 20px title inset, 28px link inset in the comp. */
+  padding: 1rem 1.25rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.2;
+}
+
+.meta {
+  margin-block-start: 0.125rem;
+  font-size: var(--fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-on-media-muted);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.arrow {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translateX(0.25rem);
+}
+
+@media (min-width: 768px) {
+  .card {
+    /* Comp box: 660x242. */
+    aspect-ratio: 660 / 242;
+  }
+
+  .caption {
+    padding: 1rem 1.75rem 1.125rem 1.25rem;
+  }
+}

@@ -1,0 +1,31 @@
+/* Numbered section label — 13px-tall layers ⇒ 11px / 0.16em uppercase. */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Comp tracking, once there's room for it on one line. */
+@media (min-width: 480px) {
+  .eyebrow {
+    letter-spacing: var(--tracking-label);
+    white-space: nowrap;
+  }
+}
+
+.light {
+  color: var(--text-secondary);
+}
+
+.inverse {
+  color: var(--text-inverse-muted);
+}
+
+.media {
+  color: var(--text-on-media-muted);
+}

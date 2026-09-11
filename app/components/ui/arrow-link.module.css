@@ -1,0 +1,106 @@
+/* Small tracked link. `bare` matches the 13px-tall label layers; `boxed`
+   reproduces the 123x30 bordered frame around "About Link" (1:12 / 2:30). */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.label {
+  position: relative;
+}
+
+/* Underline grows from the left on hover. */
+.label::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.3125rem;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover .label::after,
+.link:focus-visible .label::after {
+  transform: scaleX(1);
+}
+
+.arrow {
+  font-size: 0.875em;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover .arrow,
+.link:focus-visible .arrow {
+  transform: translateX(0.25rem);
+}
+
+/* ------------------------------------------------------------------ variants */
+
+.bare {
+  padding: 0;
+}
+
+.boxed {
+  /* Comp: 123x30 frame, label inset 21px from the left, 9px from the top. */
+  min-height: 30px;
+  padding: 0.5rem 1.3125rem;
+  border: 1px solid var(--rule-strong);
+  transition:
+    color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out);
+}
+
+.boxed .label::after {
+  display: none;
+}
+
+.boxed:hover,
+.boxed:focus-visible {
+  background-color: var(--ink);
+  border-color: var(--ink);
+  color: var(--text-inverse);
+}
+
+/* --------------------------------------------------------------------- tones */
+
+.light {
+  color: var(--text-primary);
+}
+
+.light:hover,
+.light:focus-visible {
+  color: var(--graphite);
+}
+
+.inverse {
+  color: var(--text-inverse);
+}
+
+.inverse.boxed {
+  border-color: var(--rule-inverse-strong);
+}
+
+.inverse.boxed:hover,
+.inverse.boxed:focus-visible {
+  background-color: var(--text-inverse);
+  border-color: var(--text-inverse);
+  color: var(--ink);
+}
+
+.media {
+  color: var(--text-on-media);
+}

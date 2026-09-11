@@ -1,0 +1,139 @@
+/* 04 / ABOUT US — Frame 5 (1:20), 1344x824.
+
+   The drawings form a washed-out backdrop; the statement sits over them. The
+   stage is a single positioned area: the backdrop fills it absolutely, the copy
+   flows normally on top and therefore sets the stage's height. */
+
+.section {
+  padding-block: 3.5rem;
+}
+
+.srHeading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stage {
+  position: relative;
+  margin-block-start: 2rem;
+  isolation: isolate;
+}
+
+/* --------------------------------------------------------------- backdrop -- */
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* How far back the drawings sit. Raise for more presence, lower for less —
+   this single value is the whole effect. */
+.drawing {
+  opacity: 0.16;
+  background-color: transparent;
+  border: 0;
+}
+
+.drawing img {
+  object-fit: contain;
+}
+
+/* draw4 1 — the tall sketch, hugging the left edge and running past the top of
+   the copy, exactly as the comp has it bleeding out of the frame. */
+.portraitSlot {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: min(46%, 23rem);
+}
+
+/* The four-image row, bottom-aligned along the base of the stage. */
+.gallery {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 1rem;
+}
+
+.galleryItem {
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------------- copy -- */
+
+.copy {
+  position: relative;
+  z-index: 1;
+  /* Sits inboard of the left drawing so the text never starts on its densest
+     part, and stops well short of the right edge. */
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-block: 0.5rem 6rem;
+}
+
+/* --------------------------------------------------------------- scale up -- */
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 4.5rem;
+  }
+
+  .copy {
+    margin-inline: auto;
+    padding-block: 1rem 9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery {
+    /* Comp column widths — they total exactly the 1344 content column. */
+    grid-template-columns: 546fr 236fr 305fr 257fr;
+    gap: 0;
+  }
+
+  /* The comp gives the last three drawings an identical 413px height and the
+     first one 274px. Setting the height directly (rather than letting each
+     slot's own aspect ratio decide) is what keeps the right-hand drawing the
+     same size as the one beside it, since the source files differ in shape. */
+  .galleryItem:first-child .drawing {
+    height: 17.125rem;
+  }
+
+  .galleryItem:nth-child(n + 2) .drawing {
+    height: 25.8125rem;
+  }
+
+  /* With a fixed height the drawings fill their box rather than letterboxing
+     inside it, so neighbouring columns read at the same scale. */
+  .galleryItem .drawing img {
+    object-fit: cover;
+  }
+
+  .copy {
+    margin-inline: auto;
+    max-width: 76ch;
+    padding-block: 1.25rem 11rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .stage {
+    margin-block-start: 2.75rem;
+  }
+
+  .copy {
+    padding-block: 1.5rem 13rem;
+  }
+}

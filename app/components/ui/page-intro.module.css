@@ -1,0 +1,31 @@
+/* Secondary-page masthead, on the home page's scale. */
+
+.intro {
+  padding-block: 3.5rem;
+}
+
+.title {
+  max-width: 44rem;
+  margin-block-start: 1.5rem;
+  font-size: var(--fs-display-2);
+  line-height: var(--lh-display-2);
+}
+
+/* With no eyebrow above it the title leads the block. */
+.title:first-child {
+  margin-block-start: 0;
+}
+
+.body {
+  max-width: 40rem;
+  margin-block-start: 1.75rem;
+  font-size: var(--fs-prose);
+  line-height: var(--lh-prose);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .intro {
+    padding-block: 5rem 4rem;
+  }
+}

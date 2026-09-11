@@ -1,0 +1,219 @@
+/* ============================================================================
+   ARCHIA — Design tokens
+   ----------------------------------------------------------------------------
+   Source of truth: Figma file "ARCHIA — Architecture Studio Website",
+   page "ARCHIA — Home", frame "HOME — 1440 Desktop" (node 2:2, 1440x4188).
+
+   GEOMETRY (spacing, sizes, type scale) is measured from that frame and is
+   exact. COLOUR values marked (inferred) could not be read from Figma: the
+   file's MCP tool-call quota was exhausted before `get_design_context` could
+   run, and `get_variable_defs` returned no bound variables. Every colour lives
+   in this one file — correcting them is a single-file edit. See README.md.
+
+   Consumed two ways:
+     1. directly as `var(--ink)` etc. inside the per-section CSS Modules
+     2. re-exported to Tailwind's theme in globals.css, so `bg-ink`,
+        `text-stone`, `font-display` … also work
+   ========================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------- surfaces
+     --ivory / --ink carried over from the project's original globals.css. */
+  --ivory: #f5f4f1; /* page ground */
+  --ivory-warm: #f4f1eb; /* header band */
+  --ivory-deep: #ece8e0; /* inset cards, image placeholders */
+  --ink: #1c1c1a; /* contact band + footer ground */
+  --ink-deep: #141413;
+  --graphite: #3a3a36;
+  --stone: #6f6f66; /* secondary text on ivory */
+  --stone-light: #9a9a90;
+  --sand: #c9c1b1; /* (inferred) warm neutral */
+
+  /* (inferred) Muted gold accent. Corroborated by the UI-Pro-Max
+     "Architecture / Interior" palette, whose primary #171717 matches the ink
+     this project already shipped in globals.css. Dark enough to clear 4.5:1 on
+     ivory; --accent-inverse is the lifted pair for the dark bands. */
+  --accent: #a16207;
+  --accent-inverse: #d6a94a;
+
+  /* ------------------------------------------------------------------- text */
+  --text-primary: var(--ink);
+  --text-secondary: var(--stone);
+  --text-tertiary: var(--stone-light);
+  --text-inverse: #f2efe9;
+  --text-inverse-muted: rgb(242 239 233 / 0.62);
+  --text-inverse-faint: rgb(242 239 233 / 0.38);
+  --text-on-media: #ffffff;
+  --text-on-media-muted: rgb(255 255 255 / 0.76);
+
+  /* ------------------------------------------------------------------ rules
+     The comp draws 1px hairlines at 1344px wide between every section. */
+  --rule: rgb(28 28 26 / 0.16);
+  --rule-strong: rgb(28 28 26 / 0.32);
+  --rule-inverse: rgb(242 239 233 / 0.18);
+  --rule-inverse-strong: rgb(242 239 233 / 0.42);
+  --rule-on-media: rgb(255 255 255 / 0.45);
+
+  /* ---------------------------------------------------------------- scrims
+     "Hero Left Overlay" (2:15) + "Hero Bottom Overlay" (2:16), and the
+     "Project 0n Bottom Overlay" bands (2:50 / 2:51, 60px tall).
+
+     The hero pair carries every slide, so it is set by the *brightest* one
+     rather than by the comp's single dark photograph: the dawn skyline
+     (dubai2) puts pale sky behind the eyebrow and lit water behind the body.
+     The comp's 0.72/0.46/0.08 side ramp left the eyebrow at 3.4:1 there —
+     the eyebrow sits above the bottom overlay, so the side ramp is the only
+     thing under it. Stops below hold every slide at >=5:1 for the 16px muted
+     copy and >=8.6:1 for the H1, measured over the real crops at 1440x520 and
+     390x576. One ramp for all slides: the hero must not visibly re-grade
+     itself as the carousel advances. */
+  --scrim-hero-side: linear-gradient(
+    90deg,
+    rgb(20 20 19 / 0.84) 0%,
+    rgb(20 20 19 / 0.6) 48%,
+    rgb(20 20 19 / 0.18) 78%,
+    rgb(20 20 19 / 0) 100%
+  );
+  --scrim-hero-bottom: linear-gradient(
+    180deg,
+    rgb(20 20 19 / 0) 0%,
+    rgb(20 20 19 / 0.66) 100%
+  );
+  /* Below 1024 the hero copy spans the whole column, so a left-to-right ramp
+     protects only the half the text no longer sits in — at 390px the H1 runs to
+     95% of the frame, where the side ramp has faded out, and it measured as low
+     as 2.2:1. This full-width veil replaces it there: top-down, so the sky stays
+     open and the weight gathers where the copy actually is. */
+  --scrim-hero-veil: linear-gradient(
+    180deg,
+    rgb(20 20 19 / 0.14) 0%,
+    rgb(20 20 19 / 0.5) 28%,
+    rgb(20 20 19 / 0.72) 58%,
+    rgb(20 20 19 / 0.8) 100%
+  );
+  --scrim-card-bottom: linear-gradient(
+    180deg,
+    rgb(20 20 19 / 0) 0%,
+    rgb(20 20 19 / 0.78) 100%
+  );
+
+  /* ------------------------------------------------------------------ shell
+     Section rules run 48 → 1392 on a 1440 frame: 1344 content, 48 gutters.
+     Declared mobile-first: the comp's 48/64px values land at >=1024px. */
+  --shell-max: 1344px;
+  --gutter: 20px;
+  --gutter-hero: 20px;
+
+  /* ----------------------------------------------------------------- radius */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-pill: 999px;
+
+  /* ------------------------------------------------------------------ type
+     Families are set by next/font in app/layout.tsx.
+     A light serif display + a tracked sans for labels is (inferred) from the
+     8–13px letterspaced label layers and the 40/48px display measurements. */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", "Times New Roman",
+    serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Fluid sizes: min at 375px viewport, max at the 1440px comp width.
+     Max values are the measured Figma sizes. */
+
+  /* HERO H1 (2:18) — 600x89.6 = 2 lines, 40px / 1.12 */
+  --fs-display-1: clamp(1.875rem, 1.655rem + 0.94vw, 2.5rem);
+  --lh-display-1: 1.12;
+
+  /* CONTACT H2 (76:2) — 600x108 = 2 lines, 48px / 1.125 */
+  --fs-display-2: clamp(1.875rem, 1.479rem + 1.69vw, 3rem);
+  --lh-display-2: 1.125;
+
+  /* APPROACH H2 (2:28) — 600x58.8 = 2 lines, 26px / 1.13 */
+  --fs-display-3: clamp(1.375rem, 1.287rem + 0.38vw, 1.625rem);
+  --lh-display-3: 1.13;
+
+  /* FOOTER logo (87:4) — 300x27 */
+  --fs-display-4: clamp(1.25rem, 1.162rem + 0.38vw, 1.5rem);
+
+  /* Body copy — every 24px-tall text layer is 16px / 1.5 */
+  --fs-body: 1rem;
+  --lh-body: 1.5;
+
+  /* Long-form philosophy block (41:3) — 955x523 ≈ 17px / 1.75 */
+  --fs-prose: clamp(0.9375rem, 0.898rem + 0.17vw, 1.0625rem);
+  --lh-prose: 1.75;
+
+  /* 18px-tall footer / contact detail values */
+  --fs-detail: 0.9375rem;
+  --lh-detail: 1.45;
+
+  /* 14px tracked nav items (2:7–2:11, 24px tall) */
+  --fs-nav: 0.875rem;
+
+  /* 11px tracked uppercase eyebrows — every 13px-tall label layer
+     ("04 / ABOUT US" 100x13, "05/ CONTACT TO US" 135x13, …) */
+  --fs-label: 0.6875rem;
+
+  /* 9px hyper-tracked wordmark sub (2:6 — "STUDIO", 90x8) */
+  --fs-microlabel: 0.5625rem;
+
+  /* --------------------------------------------------------------- tracking */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-label: 0.16em; /* 11px eyebrows */
+  --tracking-nav: 0.1em; /* 14px nav */
+  --tracking-logo: 0.18em; /* ARCHIA wordmark */
+  --tracking-micro: 0.55em; /* STUDIO sub-wordmark */
+
+  /* ----------------------------------------------------------------- weight */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+
+  /* ------------------------------------------------------------------ motion
+     No transitions are specified in the comp; these are (inferred) and kept
+     restrained to match the studio's "precision, restraint" copy. */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur: 260ms;
+  --dur-slow: 520ms;
+
+  /* -------------------------------------------------------------------- misc */
+  /* Focus indicator. WCAG 2.2: >=2px perimeter at >=3:1 against the adjacent
+     ground, so it tracks the band it sits on — dark bands re-point
+     --focus-color at the inverse ink in their own module. */
+  --focus-color: var(--ink);
+  --focus-ring: 2px solid var(--focus-color);
+  --focus-offset: 3px;
+
+  --header-h: 64px; /* HEADER frame (2:3) is 1440x88 at the comp width */
+}
+
+/* ------------------------------------------------------------- scale up ---
+   Mobile-first: each step moves toward the 1440px comp. */
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --gutter-hero: 32px;
+    --header-h: 72px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 48px; /* comp value */
+    --gutter-hero: 64px; /* HERO copy inset (2:17–2:24) */
+    --header-h: 88px; /* comp value */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}

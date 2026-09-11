@@ -1,0 +1,130 @@
+/* SECTION 01 — OUR APPROACH (2:25).
+   Comp row widths sum to the 1344 column: 386 image · ~374 copy · 518 principles. */
+
+.section {
+  padding-block: 3.5rem;
+}
+
+.row {
+  display: grid;
+  gap: 2.5rem;
+  margin-block-start: 2rem;
+}
+
+/* The approach image is a pale line drawing, so the frame is taken to the page
+   ground — background and border both --ivory — and it sits on the page with no
+   visible box edge around it. */
+.mediaCol > * {
+  background-color: var(--ivory);
+  border: 1px solid var(--ivory);
+}
+
+/* ------------------------------------------------------------------ copy ---- */
+
+/* H2 (2:28) — 58.8px over 2 lines ⇒ 26px / 1.13 at the comp width. */
+.heading {
+  font-size: var(--fs-display-3);
+  line-height: var(--lh-display-3);
+}
+
+.body {
+  margin-block-start: 1.25rem;
+  color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------ principles ---- */
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 0;
+}
+
+.principle {
+  padding-inline: 1.25rem;
+}
+
+/* The comp's vertical rules (30:3 / 30:4 / 30:6) sit on every column boundary;
+   on a 2-up mobile grid that is only the second column. */
+.principle:nth-child(even) {
+  border-inline-start: 1px solid var(--rule);
+}
+
+.principle:nth-child(odd) {
+  padding-inline-start: 0;
+}
+
+/* Title (2:32 …) sits 17px below the 30.8px icon. */
+.principleTitle {
+  margin-block-start: 1.0625rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-normal);
+}
+
+.principleBody {
+  margin-block-start: 0.1875rem;
+  font-size: var(--fs-detail);
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------- scale up --- */
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 4.5rem;
+  }
+
+  /* Image beside the copy; principles drop to a full-width 4-up row. */
+  .row {
+    grid-template-columns: minmax(0, 386fr) minmax(0, 374fr);
+    gap: 2.25rem;
+  }
+
+  .principlesCol {
+    grid-column: 1 / -1;
+    margin-block-start: 1rem;
+  }
+
+  .principles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Rules now fall between all four columns. */
+  .principle:nth-child(n + 2) {
+    border-inline-start: 1px solid var(--rule);
+  }
+
+  .principle:nth-child(odd) {
+    padding-inline-start: 1.25rem;
+  }
+
+  .principle:first-child {
+    padding-inline-start: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    /* Frame 2:25 is 300px tall including its 28px top inset. */
+    padding-block: 1.75rem 3.5rem;
+  }
+
+  /* The comp's single three-column row. */
+  .row {
+    grid-template-columns: minmax(0, 386fr) minmax(0, 374fr) minmax(0, 518fr);
+    gap: 2.25rem;
+    margin-block-start: 1.625rem;
+  }
+
+  .principlesCol {
+    grid-column: auto;
+    margin-block-start: 0;
+  }
+
+  .heading {
+    /* H2 starts 9px below the image top in the comp. */
+    margin-block-start: 0.5625rem;
+  }
+}

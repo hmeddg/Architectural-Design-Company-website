@@ -1,0 +1,10 @@
+/* Handset mark. Sized in em so it scales with the number beside it — at the
+   header's 14px that lands ~16px, which optically matches the digits' height
+   rather than the smaller cap height a 1em icon would give. */
+
+.icon {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+}

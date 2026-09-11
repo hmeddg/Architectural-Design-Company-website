@@ -1,0 +1,37 @@
+/* Frame 9 (103:23) — two 25x25 marks, left edges 41px apart ⇒ 16px gap. */
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  display: block;
+  color: var(--text-inverse-muted);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--text-inverse);
+}
+
+/* Explicit 25x25 leaf, matching the comp. */
+.icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

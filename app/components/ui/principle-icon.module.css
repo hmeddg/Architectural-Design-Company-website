@@ -1,0 +1,8 @@
+/* Principle marks — the comp's 40x30.8 box, kept explicit. */
+
+.icon {
+  display: block;
+  width: 40px;
+  height: 31px;
+  color: var(--text-primary);
+}

@@ -1,0 +1,39 @@
+/* Services route — the home page's principle-column rhythm at a larger scale. */
+
+.section {
+  padding-block: 0 4.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.item {
+  padding-block-start: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.title {
+  margin-block-start: 1.25rem;
+  font-size: var(--fs-display-3);
+  line-height: var(--lh-display-3);
+}
+
+.body {
+  margin-block-start: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

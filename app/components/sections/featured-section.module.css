@@ -1,0 +1,85 @@
+/* FEATURED PROJECT — Frame 7 (96:3) is a 1342x663 window (ratio 2.024) onto a
+   taller image, so the crop holds to the top edge. */
+
+.section {
+  padding-block: 3.5rem;
+}
+
+.srHeading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.body {
+  margin-block-start: 2rem;
+}
+
+.mediaLink {
+  display: block;
+  /* Portrait-ish crop on phones; the comp's letterbox returns at >=768px. */
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--graphite);
+}
+
+.figure {
+  height: 100%;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.mediaLink:hover .figure,
+.mediaLink:focus-visible .figure {
+  transform: scale(1.02);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin-block-start: 1.25rem;
+}
+
+.title {
+  font-size: var(--fs-display-3);
+  line-height: var(--lh-display-3);
+}
+
+.meta {
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 4.5rem;
+  }
+
+  .mediaLink {
+    /* Comp window: 1342x663. */
+    aspect-ratio: 1342 / 663;
+  }
+}
+
+@media (min-width: 1280px) {
+  .body {
+    /* Label at y=1319, frame at y=1374. */
+    margin-block-start: 2.5rem;
+  }
+}
+
+/* Parallax frame fills the media window. */
+.parallax {
+  height: 100%;
+}

@@ -1,0 +1,165 @@
+/* HERO (2:13) — 1440x516.
+   Copy is inset 64px in the comp (not on the 48px section grid). The comp ends
+   the block with the slider dots at y=471, ~49px off the bottom; the dots were
+   dropped and the block then lifted off that edge, so the CTA closes it at
+   y≈416 instead. The lift is per-breakpoint rather than one value: at 390px the
+   H1 wraps to six lines and the block is ~450 of the 576px frame, so the same
+   104px would push the eyebrow up under the header. */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 36rem;
+  overflow: hidden;
+  background-color: var(--graphite);
+  color: var(--text-on-media);
+  /* Light copy on a dark image ⇒ the focus ring flips. */
+  --focus-color: var(--text-on-media);
+}
+
+/* ------------------------------------------------------------------- media -- */
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+.figure {
+  height: 100%;
+}
+
+/* Left Overlay (2:15). The comp's left-to-right ramp only works once the copy
+   is inset in a column — below 1024 it spans the frame, so this carries the
+   full-width veil instead and the side ramp comes back with the column. */
+.scrimSide {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-hero-veil);
+}
+
+/* Bottom Overlay (2:16) covers 220 of the 520px frame ⇒ 42%. Raised to 78%:
+   the comp's band topped out level with the title, and with the copy sitting
+   higher the H1 and eyebrow had climbed clear out of it. Desktop only — on
+   narrow frames the veil above already spans the full height. */
+.scrimBottom {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 78%;
+}
+
+/* ------------------------------------------------------------------- inner -- */
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: calc(var(--shell-max) + var(--gutter-hero) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter-hero);
+  padding-block-end: 3rem;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  font-size: var(--fs-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  /* Full ink, not --text-on-media-muted: this is the smallest type on the hero,
+     and at 76% over photography it measured 1.7–4.4:1 across the slides. The
+     body copy below is larger and stays muted. */
+  color: var(--text-on-media);
+}
+
+/* H1 (2:18) — 600x89.6 ⇒ 40px / 1.12 at the comp width. */
+.title {
+  max-width: 37.5rem;
+  margin-block-start: 1.75rem;
+  font-size: var(--fs-display-1);
+  line-height: var(--lh-display-1);
+}
+
+/* Body (2:19) — 390 wide. */
+.body {
+  max-width: 24.375rem;
+  margin-block-start: 1.5rem;
+  color: var(--text-on-media-muted);
+}
+
+/* CTA (2:20) — 130x42 with a 15px label inset; the 100x24 label is a 16px
+   sentence-case face, not the tracked uppercase used elsewhere. */
+.cta {
+  margin-block-start: 2rem;
+  padding: 0.5625rem 0.9375rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rule-on-media);
+  color: var(--text-on-media);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background-color: var(--text-on-media);
+  border-color: var(--text-on-media);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- scale up -- */
+
+@media (min-width: 768px) {
+  .inner {
+    padding-block-end: 4.5rem;
+  }
+
+  .eyebrow {
+    letter-spacing: var(--tracking-label);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    /* HERO frame height. */
+    min-height: 32.5rem;
+  }
+
+  /* The copy is back in its 600px column, so the comp's ramp applies again. */
+  .scrimSide {
+    background: var(--scrim-hero-side);
+  }
+
+  .scrimBottom {
+    background: var(--scrim-hero-bottom);
+  }
+
+  .inner {
+    padding-block-end: 6.5rem;
+  }
+}
+
+/* Parallax frame fills the slide so the drifting layer has a box to clip to. */
+.parallax {
+  height: 100%;
+}
