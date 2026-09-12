@@ -26,7 +26,7 @@ import { useEffect, useRef } from "react";
  */
 
 /** Proportion of the remaining distance closed per frame. Higher = tighter. */
-const EASE = 0.1;
+const EASE = 0.22;
 /** Below this, snap and stop animating. */
 const EPSILON = 0.4;
 

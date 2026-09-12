@@ -74,7 +74,7 @@ export function HeroSection() {
             className={cx(styles.slide, i === index && styles.slideActive)}
             aria-hidden={i !== index}
           >
-            <Parallax strength={6} className={styles.parallax}>
+            <Parallax strength={3} className={styles.parallax}>
               <Figure
                 slot={item.media}
                 sizes="100vw"

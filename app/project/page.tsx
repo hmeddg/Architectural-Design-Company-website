@@ -27,7 +27,7 @@ export default function ProjectsPage() {
       <Container as="section" className={styles.section}>
         <ul className={styles.grid}>
           {projects.map((project, i) => (
-            <Reveal as="li" key={project.slug} id={project.slug} delay={i * 80}>
+            <Reveal as="li" key={project.slug} id={project.slug} delay={i * 45}>
               <ProjectCard
                 project={project}
                 sizes="(min-width: 1280px) 660px, (min-width: 768px) 48vw, 100vw"

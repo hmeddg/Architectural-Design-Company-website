@@ -48,7 +48,7 @@ export default function ServicesPage() {
       <Container as="section" className={styles.section}>
         <ul className={styles.grid}>
           {disciplines.map((discipline, i) => (
-            <Reveal as="li" key={discipline.title} className={styles.item} delay={i * 70}>
+            <Reveal as="li" key={discipline.title} className={styles.item} delay={i * 40}>
               <PrincipleIcon name={principles[i].icon} />
               <h2 className={styles.title}>{discipline.title}</h2>
               <p className={styles.body}>{discipline.body}</p>

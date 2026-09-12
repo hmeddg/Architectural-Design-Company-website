@@ -20,9 +20,9 @@ type RevealProps = {
   delay?: number;
   /**
    * How the element arrives:
-   *   soft — 18px rise. Body copy, small blocks.
-   *   lift — 44px rise with a slight settle in scale. Cards, portraits.
-   *   veil — 64px rise behind a clip that opens upward. The big images.
+   *   soft — 10px rise. Body copy, small blocks.
+   *   lift — 22px rise with a slight settle in scale. Cards, portraits.
+   *   veil — 28px rise behind a clip that opens upward. The big images.
    */
   variant?: RevealVariant;
   className?: string;

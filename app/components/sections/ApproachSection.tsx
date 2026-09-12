@@ -32,14 +32,14 @@ export function ApproachSection() {
           />
         </Reveal>
 
-        <Reveal className={styles.copyCol} delay={60}>
+        <Reveal className={styles.copyCol} delay={35}>
           <h2 id="approach-heading" className={styles.heading}>
             {approach.heading}
           </h2>
           <p className={styles.body}>{approach.body}</p>
         </Reveal>
 
-        <Reveal className={styles.principlesCol} delay={120}>
+        <Reveal className={styles.principlesCol} delay={70}>
           <ul className={styles.principles}>
             {principles.map((principle) => (
               <li key={principle.title} className={styles.principle}>

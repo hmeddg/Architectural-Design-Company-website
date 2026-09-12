@@ -24,7 +24,7 @@ export function ProjectsSection() {
 
       <ul className={styles.grid}>
         {projects.map((project, i) => (
-          <Reveal as="li" key={project.slug} delay={i * 80} variant="lift">
+          <Reveal as="li" key={project.slug} delay={i * 45} variant="lift">
             <ProjectCard
               project={project}
               sizes="(min-width: 1280px) 660px, (min-width: 768px) 48vw, 100vw"

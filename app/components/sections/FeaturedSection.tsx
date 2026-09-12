@@ -31,7 +31,7 @@ export function FeaturedSection() {
 
       <Reveal className={styles.body} variant="veil">
         <Link href={featured.link.href} className={styles.mediaLink}>
-          <Parallax strength={9} className={styles.parallax}>
+          <Parallax strength={4} className={styles.parallax}>
             <Figure
               slot={featured.media}
               sizes="(min-width: 1440px) 1344px, 100vw"

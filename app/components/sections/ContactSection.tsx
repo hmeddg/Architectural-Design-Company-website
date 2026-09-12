@@ -69,7 +69,7 @@ export function ContactSection({
             </dl>
           </Reveal>
 
-          <Reveal className={styles.formCol} delay={80}>
+          <Reveal className={styles.formCol} delay={45}>
             <ContactForm />
           </Reveal>
         </div>

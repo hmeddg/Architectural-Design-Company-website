@@ -8,7 +8,7 @@ type ParallaxProps = {
   children: ReactNode;
   /**
    * Travel as a percentage of the frame's own height, measured from centre.
-   * Keep it small — 6–10 reads as depth, more reads as the image sliding.
+   * Keep it small — 3–5 reads as depth, more reads as the image sliding.
    */
   strength?: number;
   className?: string;
@@ -29,7 +29,7 @@ type ParallaxProps = {
  *
  * Skipped entirely under `prefers-reduced-motion`.
  */
-export function Parallax({ children, strength = 8, className }: ParallaxProps) {
+export function Parallax({ children, strength = 4, className }: ParallaxProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
 
