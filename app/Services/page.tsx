@@ -3,7 +3,6 @@ import { principles } from "@/app/data/content";
 import { Container } from "@/app/components/ui/Container";
 import { PageIntro } from "@/app/components/ui/PageIntro";
 import { PrincipleIcon } from "@/app/components/ui/PrincipleIcon";
-import { Reveal } from "@/app/components/ui/Reveal";
 import styles from "./services.module.css";
 
 export const metadata: Metadata = {
@@ -48,11 +47,11 @@ export default function ServicesPage() {
       <Container as="section" className={styles.section}>
         <ul className={styles.grid}>
           {disciplines.map((discipline, i) => (
-            <Reveal as="li" key={discipline.title} className={styles.item} delay={i * 40}>
+            <li key={discipline.title} className={styles.item}>
               <PrincipleIcon name={principles[i].icon} />
               <h2 className={styles.title}>{discipline.title}</h2>
               <p className={styles.body}>{discipline.body}</p>
-            </Reveal>
+            </li>
           ))}
         </ul>
       </Container>

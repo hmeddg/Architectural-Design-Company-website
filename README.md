@@ -76,7 +76,7 @@ app/
   components/
     layout/             SiteHeader, PrimaryNav, MobileMenu, SiteFooter
     sections/           one component per band of the page
-    ui/                 shared primitives (Figure, Container, Reveal, …)
+    ui/                 shared primitives (Figure, Container, Parallax, …)
   lib/                  cx, media types, contact schema, useActiveSection
   actions/contact.ts    Server Action for the contact form
 public/                 photography and drawings
@@ -118,11 +118,11 @@ layer maps to which file.
 
 ### Server by default
 
-Seven components opt into the client, each for a stated reason: `HeroSection`
+Six components opt into the client, each for a stated reason: `HeroSection`
 (the carousel advances itself), `ContactForm` (`useActionState`), `PrimaryNav`
-and `MobileMenu` (the sliding underline and the disclosure), and the
-`SmoothScroll` / `Parallax` / `Reveal` effects. Everything else — including the
-H1 and the LCP image — server-renders in the initial HTML.
+and `MobileMenu` (the scroll-tracked active item and the disclosure), and the
+`SmoothScroll` / `Parallax` effects. Everything else — including the H1 and the
+LCP image — server-renders in the initial HTML.
 
 ## The contact form
 

@@ -1,7 +1,6 @@
 import { projects, projectsLabel, projectsViewAll } from "@/app/data/projects";
 import { Container } from "@/app/components/ui/Container";
 import { ProjectCard } from "@/app/components/ui/ProjectCard";
-import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import styles from "./projects-section.module.css";
 
@@ -23,13 +22,13 @@ export function ProjectsSection() {
       </h2>
 
       <ul className={styles.grid}>
-        {projects.map((project, i) => (
-          <Reveal as="li" key={project.slug} delay={i * 45} variant="lift">
+        {projects.map((project) => (
+          <li key={project.slug}>
             <ProjectCard
               project={project}
               sizes="(min-width: 1280px) 660px, (min-width: 768px) 48vw, 100vw"
             />
-          </Reveal>
+          </li>
         ))}
       </ul>
     </Container>

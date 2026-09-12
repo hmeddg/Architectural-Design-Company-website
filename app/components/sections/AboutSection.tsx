@@ -1,7 +1,6 @@
 import { about } from "@/app/data/content";
 import { Container } from "@/app/components/ui/Container";
 import { Figure } from "@/app/components/ui/Figure";
-import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { Statement } from "@/app/components/ui/Statement";
 import styles from "./about-section.module.css";
@@ -58,9 +57,9 @@ export function AboutSection() {
           </ul>
         </div>
 
-        <Reveal className={styles.copy} variant="soft">
+        <div className={styles.copy}>
           <Statement blocks={about.statement} />
-        </Reveal>
+        </div>
       </div>
     </Container>
   );

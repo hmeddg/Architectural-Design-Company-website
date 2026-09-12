@@ -3,7 +3,6 @@ import { contactSection } from "@/app/data/content";
 import { contact } from "@/app/data/site";
 import { Container } from "@/app/components/ui/Container";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
-import { Reveal } from "@/app/components/ui/Reveal";
 import { ContactForm } from "./ContactForm";
 import styles from "./contact-section.module.css";
 
@@ -43,7 +42,7 @@ export function ContactSection({
         ) : null}
 
         <div className={styles.row}>
-          <Reveal className={styles.copy}>
+          <div className={styles.copy}>
             <Heading id="contact-heading" className={styles.heading}>
               {contactSection.heading}
             </Heading>
@@ -67,11 +66,11 @@ export function ContactSection({
                 </dd>
               </div>
             </dl>
-          </Reveal>
+          </div>
 
-          <Reveal className={styles.formCol} delay={45}>
+          <div className={styles.formCol}>
             <ContactForm />
-          </Reveal>
+          </div>
         </div>
       </Container>
     </section>

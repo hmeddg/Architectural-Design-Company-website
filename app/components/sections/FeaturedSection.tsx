@@ -3,7 +3,6 @@ import { featured } from "@/app/data/content";
 import { Container } from "@/app/components/ui/Container";
 import { Figure } from "@/app/components/ui/Figure";
 import { Parallax } from "@/app/components/ui/Parallax";
-import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import styles from "./featured-section.module.css";
 
@@ -29,7 +28,7 @@ export function FeaturedSection() {
         Featured project
       </h2>
 
-      <Reveal className={styles.body} variant="veil">
+      <div className={styles.body}>
         <Link href={featured.link.href} className={styles.mediaLink}>
           <Parallax strength={4} className={styles.parallax}>
             <Figure
@@ -46,7 +45,7 @@ export function FeaturedSection() {
           <h3 className={styles.title}>{featured.title}</h3>
           <p className={styles.meta}>{featured.meta}</p>
         </div>
-      </Reveal>
+      </div>
     </Container>
   );
 }

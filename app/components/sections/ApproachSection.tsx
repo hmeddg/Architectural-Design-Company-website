@@ -2,7 +2,6 @@ import { approach, principles } from "@/app/data/content";
 import { Container } from "@/app/components/ui/Container";
 import { Figure } from "@/app/components/ui/Figure";
 import { PrincipleIcon } from "@/app/components/ui/PrincipleIcon";
-import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import styles from "./approach-section.module.css";
 
@@ -25,21 +24,21 @@ export function ApproachSection() {
       <SectionHeader label={approach.label} />
 
       <div className={styles.row}>
-        <Reveal className={styles.mediaCol} variant="lift">
+        <div className={styles.mediaCol}>
           <Figure
             slot={approach.media}
             sizes="(min-width: 1280px) 386px, (min-width: 768px) 45vw, 100vw"
           />
-        </Reveal>
+        </div>
 
-        <Reveal className={styles.copyCol} delay={35}>
+        <div className={styles.copyCol}>
           <h2 id="approach-heading" className={styles.heading}>
             {approach.heading}
           </h2>
           <p className={styles.body}>{approach.body}</p>
-        </Reveal>
+        </div>
 
-        <Reveal className={styles.principlesCol} delay={70}>
+        <div className={styles.principlesCol}>
           <ul className={styles.principles}>
             {principles.map((principle) => (
               <li key={principle.title} className={styles.principle}>
@@ -49,7 +48,7 @@ export function ApproachSection() {
               </li>
             ))}
           </ul>
-        </Reveal>
+        </div>
       </div>
     </Container>
   );
