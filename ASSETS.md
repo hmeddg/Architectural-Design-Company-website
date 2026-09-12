@@ -31,9 +31,7 @@ Nothing else changes: dimensions, `sizes` and aspect ratios are already wired.
 | Figma layer | Save to | Size (1x) | Declared in |
 |---|---|---|---|
 | `HERO / background` | `public/heroimage.png` ✅ **present** | 1440×520 | `content.ts` › `heroSlides[0]` |
-| `HERO / slide 2` | `public/ARCHIA_Project_02.jpg` ✅ **present** | 1440×520 | `content.ts` › `heroSlides[1]` |
-| `HERO / slide 3` | `public/dubai2.png` ✅ **present** | 1440×520 | `content.ts` › `heroSlides[2]` |
-| `HERO / slide 4` | `public/dubai.jpeg` ✅ **present** | 1440×520 | `content.ts` › `heroSlides[3]` |
+| `HERO / slide 3` | `public/dubai2.png` ✅ **present** | 1440×520 | `content.ts` › `heroSlides[1]` |
 | `Screenshot 1405-05-26 at 13.58.56 1` | `public/images/approach/approach-detail.jpg` | 370×210 | `content.ts` › `approach.media` |
 | `Project 01 Image` | `public/images/projects/project-01.jpg` | 660×242 | `projects.ts` › `projects[0]` |
 | `Project 02 Image` | `public/images/projects/project-02.jpg` | 660×242 | `projects.ts` › `projects[1]` |
@@ -50,10 +48,14 @@ to a file in `public/`; the paths above are the ones actually in use, not the
 placeholder `images/…` destinations the manifest originally reserved.
 
 The hero is the one place where swapping art has a knock-on effect: its two
-scrims (`--scrim-hero-side` / `--scrim-hero-bottom`) are shared by all four
-slides and are set by the brightest of them, so the copy stays legible without
+scrims (`--scrim-hero-side` / `--scrim-hero-bottom`) are shared by both
+slides and are set by the brighter of them, so the copy stays legible without
 the overlay changing weight as the carousel advances. Add a brighter slide than
 `dubai2.png` and those two tokens need re-checking.
+
+The hero carousel is down to two slides on request — `heroimage.png` and
+`dubai2.png`. `public/dubai.jpeg` is no longer referenced anywhere;
+`public/ARCHIA_Project_02.jpg` is still in use, as `projects[1]`.
 
 ### Note on the About gallery
 

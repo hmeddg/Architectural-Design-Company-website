@@ -21,9 +21,9 @@ import styles from "./hero-section.module.css";
  * (including the H1 and the LCP image) still server-renders in the initial HTML.
  *
  * The comp's slider dots (2:22–2:24) were dropped on request. With no control
- * left, the slides have to rotate themselves or the three behind the first
- * would never be seen — so this now auto-advances, which WCAG 2.2.2 would
- * rather have a visible pause button for. What stands in for it:
+ * left, the slides have to rotate themselves or the second would never be seen —
+ * so this now auto-advances, which WCAG 2.2.2 would rather have a visible pause
+ * button for. What stands in for it:
  *   • hover or keyboard focus anywhere in the hero halts the rotation
  *   • `prefers-reduced-motion` stops it outright, leaving slide 1 in place
  * Re-add a control here if that trade stops being acceptable.

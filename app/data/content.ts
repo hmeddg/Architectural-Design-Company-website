@@ -10,11 +10,11 @@ import type { MediaSlot } from "@/app/lib/media";
  */
 
 /* ------------------------------------------------------------------ HERO --- */
-/* Frame 2:13 — 1440x516. The comp draws three slider dots (2:22–2:24); the two
-   Dubai photographs added here make it four. The dots render from this array's
-   length, so nothing else has to change — but the hero scrim is now shared
-   across four very differently exposed images, which is why it is tuned against
-   the brightest of them in tokens.css rather than per slide. */
+/* Frame 2:13 — 1440x516. Two slides, kept on request: the comp's hero image and
+   the Dubai skyline. Everything downstream reads this array's length, so adding
+   or removing a slide needs no other change — but the hero scrim is shared by
+   every slide rather than tuned per image, so it stays set against the brightest
+   of them in tokens.css. */
 
 export type HeroSlide = {
   media: MediaSlot;
@@ -41,21 +41,6 @@ export const heroSlides: HeroSlide[] = [
     body: "A studio practice built on clarity, proportion and enduring material quality.", // (copy)
   },
   {
-    media: {
-      figmaLayer: "HERO / slide 2",
-      // Was "/public/ARCHIA_Project_02.jpg" — `public/` is the server root, not
-      // part of the URL, so that path 404'd and the slide rendered broken.
-      src: "/ARCHIA_Project_02.jpg",
-      expectedPath: "/ARCHIA_Project_02.jpg",
-      alt: "Stone and timber villa at dusk, its living room opening onto a reflecting pool",
-      width: 1440,
-      height: 520,
-    },
-    eyebrow: "SELECTED WORK · 2023—2026", // (copy)
-    title: "Luxury defined by space, silence and proportion.", // (copy)
-    body: "Every element considered, from the volume of light to the smallest detail.", // (copy)
-  },
-  {
     // 1244x700 — the one slide wider than the 1440x520 window, so the crop is
     // vertical and the skyline stays on the horizon where the comp puts it.
     media: {
@@ -69,21 +54,6 @@ export const heroSlides: HeroSlide[] = [
     eyebrow: "RESIDENTIAL · CULTURAL · HOSPITALITY", // (copy)
     title: "Timeless by design. Precise by nature.", // (copy)
     body: "Architecture that does not seek attention — it commands it through presence.", // (copy)
-  },
-  {
-    // 445x688 — portrait, so `cover` keeps a horizontal band through the middle
-    // of the tower: the arched, planted terraces, with the city off to the right.
-    media: {
-      figmaLayer: "HERO / slide 4",
-      src: "/dubai.jpeg",
-      expectedPath: "/dubai.jpeg",
-      alt: "Residential tower in Dubai at sunset, its arched balconies deep-set and planted",
-      width: 1440,
-      height: 520,
-    },
-    eyebrow: "TOWERS · RESIDENCES · DUBAI", // (copy)
-    title: "Height answered with shade, planting and proportion.", // (copy)
-    body: "Terraces cut deep into the facade, so every home keeps its own piece of sky.", // (copy)
   },
 ];
 
